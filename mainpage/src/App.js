@@ -9,40 +9,71 @@ class App extends React.Component {
 
   state = {
     isResult: false,
-    title: 'hi'
+    name: '',
+    time: '',
+    type: '',
+    NFC: ''
   }
+
+  handleChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      NFC: e.target.value
+    });
+  };
 
   getLoginResult = async () => {
     const {
       data: {
-        title
+        name,
+        time,
+        type
       }
-    } = await axios.get(
-      "http://70.12.224.38:3000/index"
-    );
-    console.log("qweqweqweqwe : ",title);
-    
-    this.setState({ title });
-  };
-  componentDidMount() {
-    //this.getLoginResult();
+    } = await axios.get('http://localhost:4000/users', {
+      params: {
+        result: this.state.NFC
+      }
+    })
+    await console.log("qweqweqweqwe : ", name, time, type);
+
+    await this.setState({ name, time, type });
   }
 
-  AttendanceResult = () => {
-    this.setState({ isResult: true})
+  componentDidMount() {
+    console.log("this.state.NFC : ", this.state.NFC);
+  }
+
+  componentDidUpdate() {
+    console.log("this.state.NFC : ", this.state.NFC);
+    if (this.state.isResult === true) {
+      setTimeout(function () {
+        this.setState({ isResult: false, NFC: ''})
+      }.bind(this), 5000)
+    }
+  }
+
+  AttendanceResult = (e) => {
+    this.setState({ isResult: true });
     this.getLoginResult();
+    e.preventDefault();
   };
 
   render() {
-    const { isResult, title } = this.state;
+    const { isResult, name, time, type } = this.state;
     return (
       <div className="App">
         <center>
-          <h1>출근 관리 시스템</h1>
-          {isResult ? <AttendanceResult /> : <Attendance />}
-          <input name="Attendance_NFC" type="text" placeholder="NFC" />
-          <button onClick={this.AttendanceResult}>Check</button>
-          <p>{title}</p>
+          <p className="title">출근 관리 시스템</p>
+          {isResult ?
+            <AttendanceResult
+              name={name}
+              time={time}
+              type={type}
+            /> : <Attendance />}
+          <form>
+            <input name="Attendance_NFC" value={this.state.NFC} onChange={this.handleChange} type="text" placeholder="NFC" autofocus="autofocus" autocomplete="off" />
+            <button type='submit' onClick={this.AttendanceResult}>Check</button>
+          </form>
         </center>
       </div>
     );

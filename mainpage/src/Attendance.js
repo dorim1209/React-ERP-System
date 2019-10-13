@@ -1,18 +1,12 @@
 import React from 'react';
 
-function Attendance()  {
+function Attendance() {
 
-    return (
-      <div className="Attendance">
-        <p style={styles.p}>출•퇴근 관리 시스템 입니다.</p>
-      </div>
-    );
-}
-
-const styles = {
-  p : {
-    fontSize: '30px'
-  }
+  return (
+    <div className="Attendance">
+      <p>출•퇴근 관리 시스템 입니다.</p>
+    </div>
+  );
 }
 
 export default Attendance;
