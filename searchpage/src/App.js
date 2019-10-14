@@ -1,5 +1,4 @@
 import React from 'react';
-//import Login from './login';
 import TimeLog from './timelog';
 import Admin from './admin';
 import axios from 'axios';
@@ -12,7 +11,7 @@ class App extends React.Component {
     isAdmin: false,
     login: false,
     name: '',
-    admin:'',
+    admin: '',
     number: '',
     Timelogs: [],
     dept: '',
@@ -56,8 +55,8 @@ class App extends React.Component {
           result: this.state.number
         }
       })
-    await console.log(name,admin);
-    await this.setState({ isLogin: false, isTimeLog: true, isAdmin: admin, login: true, name})
+    await console.log(name, admin);
+    await this.setState({ isLogin: false, isTimeLog: true, isAdmin: admin, login: true, name })
   }
   Logout = () => {
     this.setState({ isLogin: true, isTimeLog: false, isAdmin: false, login: false })
@@ -87,9 +86,9 @@ class App extends React.Component {
       }
     }
       = await axios.get('http://localhost:4000/admins', {
-/*         params: {
-          result: this.state.dept
-        } */
+        /*         params: {
+                  result: this.state.dept
+                } */
       })
     await console.log(Admins);
     await this.setState({ Admins })
@@ -103,19 +102,26 @@ class App extends React.Component {
         <div className="sidebar">
           {login ?
             isAdmin ?
-              <ul class="sidenav">
-                <li><p onClick={this.Logout}>로그아웃</p></li>
-                <li><p class="active" onClick={this.isAdminTimeLog}>근태기록</p></li>
-                <li><p onClick={this.Admin}>부서별조회</p></li>
-              </ul>
+              this.isAdminTimeLog ?
+                <ul className="sidenav">
+                  <li><p onClick={this.Logout}>로그아웃</p></li>
+                  <li><p onClick={this.isAdminTimeLog}>근태기록</p></li>
+                  <li><p onClick={this.Admin}>부서별조회</p></li>
+                </ul>
+                :
+                <ul className="sidenav">
+                  <li><p onClick={this.Logout}>로그아웃</p></li>
+                  <li><p onClick={this.isAdminTimeLog}>근태기록</p></li>
+                  <li><p onClick={this.Admin}>부서별조회</p></li>
+                </ul>
               :
-              <ul class="sidenav">
+              <ul className="sidenav">
                 <li><p onClick={this.Logout}>로그아웃</p></li>
-                <li><p class="active" onClick={this.isTimeLog}>근태기록</p></li>
+                <li><p onClick={this.isTimeLog}>근태기록</p></li>
               </ul>
             :
-            <ul class="sidenav">
-              <li><p class="active" onClick={this.isLogin}>로그인</p></li>
+            <ul className="sidenav">
+              <li><p onClick={this.isLogin}>로그인</p></li>
             </ul>
           }
         </div>
@@ -123,27 +129,25 @@ class App extends React.Component {
           {isLogin ?
             <form action="" method="post">
               <div className="container">
-                <label for="id"><b>사원번호</b></label>
+                <label><b>사원번호</b></label>
                 <input type="text" value={this.state.number} onChange={this.handleChange} placeholder="사원번호를 입력해주세요." />
-
-                <label for="psw"><b>비밀번호</b></label>
+                <label><b>비밀번호</b></label>
                 <input type="password" placeholder="비밀번호를 입력해주세요." />
-
                 <button type="submit" onClick={this.pushLogin}>로그인</button>
-
               </div>
-
             </form>
 
             : isTimeLog ?
               <div>
                 <p>{this.state.name}님 반갑습니다.</p>
-                <tr>
-                  <th>사원번호</th>
-                  <th>날짜</th>
-                  <th>시간</th>
-                  <th>분류</th>
-                </tr>
+                <table>
+                  <tr>
+                    <th className="tb_width">사원번호</th>
+                    <th className="tb_width">날짜</th>
+                    <th className="tb_width">시간</th>
+                    <th className="tb_width">분류</th>
+                  </tr>
+                </table>
                 {Timelogs.map(timelog => (
                   <TimeLog
                     number={timelog.number}
@@ -156,12 +160,14 @@ class App extends React.Component {
               :
               <div>
                 <p>관리자님 반갑습니다.</p>
-                <tr>
-                  <th>부서</th>
-                  <th>사원번호</th>
-                  <th>이름</th>
-                  <th>근무시간</th>
-                </tr>
+                <table>
+                  <tr>
+                    <th className="tb_width">부서</th>
+                    <th className="tb_width">사원번호</th>
+                    <th className="tb_width">이름</th>
+                    <th className="tb_width">근무시간</th>
+                  </tr>
+                </table>
                 {Admins.map(admin => (
                   <Admin
                     dept={admin.dept}

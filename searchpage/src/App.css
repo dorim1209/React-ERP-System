@@ -4,22 +4,33 @@ body {margin: 0; font-family: Arial, Helvetica, sans-serif;}
   display: flex
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
+tr:hover {background-color:#f5f5f5;}
 
 th {
   background-color: #f2f2f2;
 }
 
-form {border: 3px solid #f1f1f1; width: 100%;}
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+th, tr, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tb_width{
+  width: 25%;
+  text-align: center;
+}
+
+
+form {
+  border: 3px solid #f1f1f1;
+  width: 100%;
+}
 
 input[type=text], input[type=password] {
   width: 100%;
@@ -44,7 +55,7 @@ button:hover {
   opacity: 0.8;
 }
 
-.container {
+.main {
   padding: 16px;
   width: 100%;
 }
@@ -65,25 +76,25 @@ span.psw {
 
 ul.sidenav {
   list-style-type: none;
+  z-index: 1;
+  top: 0;
+  left: 0;
   margin: 0;
   padding: 0;
   width: 25%;
   background: #f1f1f1;
   position: fixed;
   height: 100%;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
-ul.sidenav li a {
+ul.sidenav li p {
+
+  padding: 0;
   display: block;
   color: #000;
-  padding: 8px 16px;
+  padding: 5% 20%;
   text-decoration: none;
-}
- 
-ul.sidenav li p.active {
-  background-color: #4CAF50;
-  color: white;
 }
 
 ul.sidenav li p:hover:not(.active) {
