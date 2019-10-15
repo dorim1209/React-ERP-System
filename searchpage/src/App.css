@@ -1,30 +1,45 @@
-body {margin: 0; font-family: Arial, Helvetica, sans-serif;}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
 
 .App{
   display: flex
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
+tr:hover {background-color:#f5f5f5;}
 
 th {
   background-color: #f2f2f2;
 }
 
-form {border: 3px solid #f1f1f1; width: 100%;}
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+th, tr, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tb_width{
+  width: 25%;
+  text-align: center;
+}
+
+
+form {
+  width: 100%;
+}
 
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 1% 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -44,9 +59,15 @@ button:hover {
   opacity: 0.8;
 }
 
-.container {
-  padding: 16px;
+.main {
   width: 100%;
+  margin-top: 3%;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 1%;
 }
 
 span.psw {
@@ -62,28 +83,42 @@ span.psw {
   }
 
 }
-
-ul.sidenav {
+ul.logo {
   list-style-type: none;
+  z-index: 1;
+  top: 0;
+  left: 0;
   margin: 0;
   padding: 0;
-  width: 25%;
+  width: 20%;
   background: #f1f1f1;
   position: fixed;
   height: 100%;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
-ul.sidenav li a {
+ul.sidenav {
+  list-style-type: none;
+  z-index: 1;
+  top: 10%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+ul.sidenav li p {
+
+  padding: 0;
   display: block;
   color: #000;
-  padding: 8px 16px;
+  padding: 5% 20%;
   text-decoration: none;
-}
- 
-ul.sidenav li p.active {
-  background-color: #4CAF50;
-  color: white;
+  font-size: 25px;
 }
 
 ul.sidenav li p:hover:not(.active) {
@@ -92,7 +127,7 @@ ul.sidenav li p:hover:not(.active) {
 }
 
 div.main {
-  margin-left: 25%;
+  margin-left: 20%;
   padding: 1px 16px;
   height: 1000px;
 }
@@ -117,4 +152,31 @@ div.main {
     text-align: center;
     float: none;
   }
+}
+img {
+  width: 20px;
+  height: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+img.logo {
+  width: 80px;
+  height: auto;
+  
+}
+
+
+ul.logo li p {
+
+  padding: 0;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  font-size: 50px;
+  text-align: center;
+  text-align: middle;
+  margin-top : 0%;
+  margin-bottom: 10%;
+
 }

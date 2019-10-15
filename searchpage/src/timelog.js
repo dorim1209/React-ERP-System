@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 
 
 
-function timelog({number, date, time, type}) {
-    return(
+function timelog({ number, date, time, type }) {
+    return (
         <div className="timelog">
+            <table>
                 <tr>
-                    <th>{number}</th>
-                    <th>{date}</th>
-                    <th>{time}</th>
-                    <th>{type}</th>
+                    <td className="tb_width">{number}</td>
+                    <td className="tb_width">{date}</td>
+                    <td className="tb_width">{time}</td>
+                    <td className="tb_width">{type}</td>
                 </tr>
+            </table>
         </div>
     );
 }
