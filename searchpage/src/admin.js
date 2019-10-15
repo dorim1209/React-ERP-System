@@ -21,6 +21,6 @@ admin.ProtoTypes = {
     dept: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    total: PropTypes.string.isRequired,
 };
 export default admin;

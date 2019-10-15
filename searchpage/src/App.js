@@ -3,6 +3,10 @@ import TimeLog from './timelog';
 import Admin from './admin';
 import axios from 'axios';
 import './App.css';
+import userPng from './user.png'
+import filePng from './file.png'
+import padlockPng from './padlock.png'
+import beliefPng from './belief.png'
 
 class App extends React.Component {
   state = {
@@ -50,7 +54,7 @@ class App extends React.Component {
         admin
       }
     }
-      = await axios.get('http://localhost:4000/users', {
+      = await axios.get('http://70.12.227.203:4000/users', {
         params: {
           result: this.state.number
         }
@@ -68,7 +72,7 @@ class App extends React.Component {
         Timelogs
       }
     }
-      = await axios.get('http://localhost:4000/timelogs', {
+      = await axios.get('http://70.12.227.203:4000/timelogs', {
         params: {
           result: this.state.number
         }
@@ -85,7 +89,7 @@ class App extends React.Component {
         Admins
       }
     }
-      = await axios.get('http://localhost:4000/admins', {
+      = await axios.get('http://70.12.227.203:4000/admins', {
         /*         params: {
                   result: this.state.dept
                 } */
@@ -100,28 +104,32 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="sidebar">
+          <ul className="logo">
+            <li><p className="logo"><img className="logo" src={beliefPng} alt=""/><p className="logotext">Belief</p></p></li>
+          </ul>
           {login ?
             isAdmin ?
               this.isAdminTimeLog ?
                 <ul className="sidenav">
-                  <li><p onClick={this.Logout}>로그아웃</p></li>
-                  <li><p onClick={this.isAdminTimeLog}>근태기록</p></li>
-                  <li><p onClick={this.Admin}>부서별조회</p></li>
+                  <li><p onClick={this.Logout}><img src={userPng} alt=""/>로그아웃</p></li>
+                  <li><p onClick={this.isAdminTimeLog}><img src={filePng} alt=""/>근태기록</p></li>
+                  <li><p onClick={this.Admin}><img src={padlockPng} alt=""/>부서별조회</p></li>
                 </ul>
                 :
                 <ul className="sidenav">
-                  <li><p onClick={this.Logout}>로그아웃</p></li>
-                  <li><p onClick={this.isAdminTimeLog}>근태기록</p></li>
-                  <li><p onClick={this.Admin}>부서별조회</p></li>
+                  <li><p onClick={this.Logout}><img src={userPng} alt=""/>로그아웃</p></li>
+                  <li><p onClick={this.isAdminTimeLog}><img src={filePng} alt=""/>근태기록</p></li>
+                  <li><p onClick={this.Admin}><img src={padlockPng} alt=""/>부서별조회</p></li>
                 </ul>
               :
               <ul className="sidenav">
-                <li><p onClick={this.Logout}>로그아웃</p></li>
-                <li><p onClick={this.isTimeLog}>근태기록</p></li>
+                <li><p onClick={this.Logout}><img src={userPng} alt=""/>로그아웃</p></li>
+                <li><p onClick={this.isTimeLog}><img src={filePng} alt=""/>근태기록</p></li>
               </ul>
             :
+            
             <ul className="sidenav">
-              <li><p onClick={this.isLogin}>로그인</p></li>
+              <li><p onClick={this.isLogin}><img src={userPng} alt=""/>로그인</p></li>
             </ul>
           }
         </div>
@@ -139,7 +147,7 @@ class App extends React.Component {
 
             : isTimeLog ?
               <div>
-                <p>{this.state.name}님 반갑습니다.</p>
+                <p className="title">{this.state.name}님 반갑습니다.</p>
                 <table>
                   <tr>
                     <th className="tb_width">사원번호</th>
@@ -155,7 +163,7 @@ class App extends React.Component {
                     time={timelog.time}
                     type={timelog.type} />
                 ))}
-
+                <p>이번 주 총 근무시간은 00분 입니다.</p>
               </div>
               :
               <div>
@@ -176,6 +184,7 @@ class App extends React.Component {
                     total={admin.total}
                   />
                 ))}
+                <p>10/14(월)~10/16(수) IT1팀의 조회 내역입니다.</p>
               </div>
           }
         </div>
