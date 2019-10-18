@@ -29,7 +29,7 @@ class App extends React.Component {
         time,
         type
       }
-    } = await axios.get('http://localhost:4000/users', {
+    } = await axios.get('http://172.30.107.85:4000/users', {
       params: {
         result: this.state.NFC
       }

@@ -21,9 +21,7 @@ router.get('/', function (req, res, next) {
        req.session.type = result2.number
        console.log('req.session.name : ', req.session.name);
        res.json({
-        name: req.session.name,
-        time: req.session.time,
-        type: req.session.type
+        name: req.session.name
       });
     })
     .catch((err) => {
